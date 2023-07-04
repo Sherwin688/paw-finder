@@ -1,0 +1,172 @@
+.view-post-container {
+  display: flex;
+  min-height: 60vh;
+
+}
+
+.view-post-img {
+  flex-basis: 40%;
+  padding: 10px;
+
+}
+
+.view-post-content {
+  padding: 0 30px;
+  flex-basis: 60%;
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+
+.small-img-, .small-img-active {
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+  margin-right: 5px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.small-img- img {
+  width: 100px;
+  object-fit: cover;
+  height: 100px;
+
+}
+
+.other-imgs {
+  display: flex;
+}
+
+.main-img {
+  width: 500px;
+  height: 500px;
+}
+
+.main-img img {
+  border-radius: 10px;
+
+  width: 500px;
+  height: 500px;
+  object-fit: contain;
+}
+
+
+.small-img-active {
+  position: relative;
+  display: inline-block;
+}
+
+.small-img-active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  /* Adjust the opacity as needed */
+  z-index: 1;
+}
+
+.adopt-btn {
+  margin: 10px;
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  align-self: last baseline;
+  cursor: pointer;
+}
+
+.edit-btn {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  background-color: blue;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  cursor: pointer;
+  margin: 0 10px;
+
+}
+
+.delete-btn {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  align-self: last baseline;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.btn-container {
+  margin: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.delete-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(225, 225, 225, 0.7);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-modal-content {
+  padding: 30px;
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.close-icon {
+  position: absolute;
+  top: 5px;
+  border: 1px solid black;
+  background-color: red;
+  right: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.exists-btn {
+  margin: 10px;
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  background-color: yellow;
+  color: #000;
+  text-align: center;
+  padding: 20px;
+}
+
+.closed-btn {
+  margin: 10px;
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}

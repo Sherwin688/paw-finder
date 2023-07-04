@@ -1,0 +1,38 @@
+.application-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    min-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.application-card h4 {
+    margin: 5px;
+}
+
+.applications-container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.view-application-btn {
+    padding: 10px;
+    background-color: turquoise;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.application-info {
+    padding: 10px;
+    display: flex;
+
+}
+
+.bold{
+    font-weight: bold;
+}
