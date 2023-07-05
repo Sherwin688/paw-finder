@@ -5,7 +5,7 @@ const upload = require("../utils/upload")
 const { uploadImage, getImage } = require("../controller/image-controller")
 const { createPost, getPost, getAllPost, editPost, deletePost } = require("../controller/post-controller")
 const { createApplication, getApplication, getAllApplications, updateApplication, getUserApplications, applicationExists } = require("../controller/application-controller")
-const { getNotifications, createNotification } = require("../controller/notification-controller")
+const { getNotifications, createNotification, deleteNotification } = require("../controller/notification-controller")
 const router = express.Router()
 
 router.post("/signup",signup)
@@ -26,6 +26,7 @@ router.get("/applications",getAllApplications)
 router.get("/applications/:name",getUserApplications)
 router.get("/notifications/:name",getNotifications)
 router.post("/notifications/create",createNotification)
+router.delete("/notifications/delete/:id",deleteNotification)
 
 
 module.exports = router

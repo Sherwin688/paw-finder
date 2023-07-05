@@ -34,4 +34,18 @@ const createNotification = async(req,res)=>{
         res.status(500).json({ msg: "Server error"})
     }
 }
-module.exports = { getNotifications,createNotification }
+
+const deleteNotification = async(req,res)=>{
+    try {
+        const notification  = await Notification.findOneAndDelete({_id:req.params.id})
+            
+        return res.status(200).json({ msg: "Notification deleted successfully" });
+
+
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: "Server error"})
+    }
+}
+module.exports = { getNotifications,createNotification,deleteNotification }

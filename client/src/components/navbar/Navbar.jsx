@@ -2,17 +2,17 @@ import React, { useContext, useState } from 'react'
 import "./Navbar.css"
 import { DataContext } from "../../utils/context/DataProvider"
 import { Link } from "react-router-dom"
-import axios from "axios"
-import { getURL } from "../../utils/ApiHelper"
 import {NotificationsContext} from "../../utils/context/NotificationsProvider"
+import {MdOutlineNotifications} from "react-icons/md"
+import {RiDeleteBin6Line} from "react-icons/ri"
 
 
 
 const Navbar = () => {
-    // const {notifications,getNotifications} = useContext(NotificationsContext)
     const {account} = useContext(DataContext)
-    const {notifications,getNotifications} = useContext(NotificationsContext)
+    const {notifications,getNotifications,deleteNotification} = useContext(NotificationsContext)
   
+    console.log(notifications);
     
     return (
         <nav>
@@ -31,11 +31,16 @@ const Navbar = () => {
                 </Link>:
                 <Link to="/signup" className="nav-links">SIGNUP</Link> }
                 
-                <Link className="nav-links dropdown" onClick={()=>getNotifications()}>NOTIFICATIONS
+                {account.name!=="" && <Link className="nav-links dropdown notification-icon-container" onClick={()=>getNotifications()}><MdOutlineNotifications className="notification-icon"/>
                 <ul className="dropdown-ul">
-                    {notifications &&notifications.length>0 && notifications.map(notification=><li className="dropdown-li">{notification.title}</li>)}
+                    {notifications.length===0?<div className="no-notifications">No Notifications</div>:
+                    notifications &&notifications.length>0 && notifications.map(notification=>
+                  <div className="notification"><li className="dropdown-li"><div className="notification-title">{notification.title}</div>
+                    <Link className="notification-delete-btn" onClick={()=>deleteNotification(notification._id)}><RiDeleteBin6Line style={{color:"#fff"}} className="delete-notification-icon"/></Link></li>
+                    <span className="notification-time">{notification.time}</span>
+                    </div>)}
                 </ul>
-                </Link>
+                </Link>}
                 
             </div>
         </nav>

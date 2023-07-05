@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 import "./Post.css"
+import { CgProfile } from "react-icons/cg"
 
 const Post = ({ post }) => {
   return (
@@ -11,13 +12,22 @@ const Post = ({ post }) => {
           <img src={post.images[0]} alt="" />
         </div>
         <div className="post-card-content">
-      <p style={{padding:"0 5px",color:post.status==="open"?"green":"red",textAlign:"right"}}><span style={{color:"#000"}}>Status: </span> {post.status}</p> 
-          <h1>{post.title}</h1>
-          
-    <p>{post.description}</p>
-        <p>post by : {post.user_name}</p>
-        <p>Status : {post.status}</p>
+          <p style={{ padding: "0 5px", textAlign: "right" }}><span className="home-status" style={{ color: "#000" }}>Status:
+          </span>
+            <span className="home-status" style={{ backgroundColor: post.status === "Open" ? "green" : "#d11a2a", color: "#fff" }}>{post.status}</span></p>
+          <div className="post-card-content-inner">
+            <div className="post-inner-info">
+              <h1 style={{lineHeight:"18px"}}>{post.title.length > 30 ? post.title.substring(0, 30) + "..." : post.title}</h1>
+              <p style={{lineHeight:"15px",color:"#666666"}}>{post.description.length > 50 ? post.description.substring(0, 50) + "..." : post.description}</p>
+            </div>
+            <div className="post-owner">
+              <div className="small-profile-container" style={{ fontWeight: 600, color: "#000", justifyContent: "flex-end", fontSize: 12 }}><p className="small-profile-content"><CgProfile style={{ fontSize: 20, margin: "0 5px" }} />{post.user_name}</p></div>
+
+              {/* <p>post by : {post.user_name}</p> */}
+            </div>
+          </div>
         </div>
+
       </div>
     </Link>
   )

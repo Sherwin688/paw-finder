@@ -12,6 +12,14 @@ const NotificationSchema = mongoose.Schema({
     for:{
         type:String,
         required:true
+    },
+    time: {
+        type: String,
+        default: new Date().toLocaleString('en-US', {
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true
+          })
     }
 })
 

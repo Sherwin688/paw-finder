@@ -3,8 +3,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    min-width: 600px;
+    width: 800px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    margin: 10px;
 }
 
 .application-card h4 {

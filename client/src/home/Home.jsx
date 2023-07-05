@@ -32,12 +32,16 @@ const Home = () => {
     }))
   }
   return (
-    <div className="container">
-
+    <div className="home-container">
+      <div className="hero-container"  style={{}}>
+        <img src="/images/logo.jpg" width={100} height={100} alt="" />
+        <h1>Paw Finder</h1>
+        <p>Find Pets That Need a Home</p>
+      <div className="search-container">
+        <input type="text" className="search" onChange={handleSearch} placeholder="Eg: Dogs, Cats" />
+      </div>
+      </div>
       <div className="posts-container">
-        <div className="search-container">
-          <input type="text" className="search" onChange={handleSearch} placeholder="Eg: Dogs, Cats" />
-        </div>
 
         {filteredPosts.map((post) => <Post post={post} key={post._id} />)}
 

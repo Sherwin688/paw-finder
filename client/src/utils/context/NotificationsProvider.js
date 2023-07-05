@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { getURL } from "../ApiHelper";
+import { getAccessToken, getURL } from "../ApiHelper";
 import { DataContext } from "./DataProvider";
 
 export const NotificationsContext = createContext();
@@ -8,7 +8,6 @@ export const NotificationsContext = createContext();
 export const NotificationsProvider = ({ children }) => {
     const { account } = useContext(DataContext)
     const [notifications, setNotifications] = useState([]);
-
 
 
     const getNotifications = async () => {
@@ -34,13 +33,24 @@ export const NotificationsProvider = ({ children }) => {
     }, [])
 
 
-    const clearNotifications = () => {
-        setNotifications([]);
+    const deleteNotification = async(id) => {
+        await axios.delete(`${getURL}/notifications/delete/${id}`, {
+            headers: {
+              "Authorization": getAccessToken(),
+            }
+          })
+            .then(res => {
+              if (res.status === 200) {
+                setNotifications(notifications.filter(notification=>notification._id!==id))
+              }
+            }).catch(err => {
+              console.log(err);
+            })
     };
 
 
     return (
-        <NotificationsContext.Provider value={{ notifications, setNotifications, getNotifications, clearNotifications }}>
+        <NotificationsContext.Provider value={{ notifications, setNotifications, getNotifications, deleteNotification }}>
             {children}
         </NotificationsContext.Provider>
     );

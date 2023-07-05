@@ -29,8 +29,10 @@ const ViewApplications = () => {
                             
                             <p>Adoption request from <span className="bold">{application.from} </span>for <span className="bold">{application.post_title.substring(0,10)}...</span> </p>
                         </div>
+                        <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
                             <Link to={`/application/${application._id}`} className="view-application-btn">View Application</Link>
                             <p style={{padding:"0 5px",color:application.status==="Accepted"?"green":application.status==="Pending"?"yellow":"red"}}><span style={{color:"#000"}}>Status: </span> {application.status}</p> 
+                        </div>
                         </div>
                 )
             }
