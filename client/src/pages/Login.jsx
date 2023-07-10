@@ -42,7 +42,7 @@ const Login = ({setIsAuthenticated}) => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="Password">Password</label>
-                    <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <div className="form-group">
                 <button type="submit" className="signup-btn"  onClick={handleLogin}>Login</button>

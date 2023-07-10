@@ -9,15 +9,15 @@ const Post = ({ post }) => {
       <div className="post-card">
 
         <div className="post-card-img">
-          <img src={post.images[0]} alt="" />
+          <img src={post.images[0]} loading="lazy" alt="" />
         </div>
         <div className="post-card-content">
           <p style={{ padding: "0 5px", textAlign: "right" }}><span className="home-status" style={{ color: "#000" }}>Status:
           </span>
-            <span className="home-status" style={{ backgroundColor: post.status === "Open" ? "green" : "#d11a2a", color: "#fff" }}>{post.status}</span></p>
+            <span className="home-status" style={{ backgroundColor: post.status === "Available" ? "#50C878" : "#f76f6f", color: "#fff" }}>{post.status}</span></p>
           <div className="post-card-content-inner">
             <div className="post-inner-info">
-              <h1 style={{lineHeight:"18px"}}>{post.title.length > 30 ? post.title.substring(0, 30) + "..." : post.title}</h1>
+              <h1 style={{lineHeight:"22px"}}>{post.title.length > 30 ? post.title.substring(0, 30) + "..." : post.title}</h1>
               <p style={{lineHeight:"15px",color:"#666666"}}>{post.description.length > 50 ? post.description.substring(0, 50) + "..." : post.description}</p>
             </div>
             <div className="post-owner">

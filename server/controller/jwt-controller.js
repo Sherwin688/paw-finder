@@ -13,14 +13,14 @@ const authenticateUser = (req,res,next)=>{
 
         jwt.verify(token,process.env.ACCESS_KEY,(error,user)=>{
             if(error){
-                res.status(500).json({msg:"error",error})
+                return res.status(500).json({msg:"error",error})
             }
             req.user=user
             next()
         })
     } catch (error) {
         console.log(error);
-        res.status(500).json({msg:"error authenticating user"})
+        return res.status(500).json({msg:"error authenticating user"})
 
     }
 

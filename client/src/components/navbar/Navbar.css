@@ -61,7 +61,6 @@ z-index: 999;
 min-height: 200px;
 display: none;
 border-radius: 15px;
-
 }
 
 .dropdown{
@@ -69,10 +68,10 @@ border-radius: 15px;
 
 }
 
-.dropdown:hover .dropdown-ul{
+/* .dropdown:hover .dropdown-ul{
     display: block;
 
-}
+} */
 
 .dropdown:focus .dropdown-ul{
     display: block;
@@ -84,15 +83,16 @@ border-radius: 15px;
 }
 
 .notification-delete-btn{
+    margin-right: 5px;
     background-color: red;
     padding: 5px;
     border-radius: 10px;
-    opacity:0;
+    /* opacity:0; */
+    display: none;
 }
 
-.dropdown-li:hover .notification-delete-btn{
-    opacity:1;
-
+.notification:hover .notification-delete-btn{
+display: block;
 }
 
 .notification-title{
@@ -110,7 +110,7 @@ border-radius: 15px;
     justify-content: center;
     align-items: center;
     padding-left: 0px!important;
-
+position: relative;
 }
 
 .delete-notification-icon{
@@ -130,6 +130,7 @@ border-radius: 15px;
 }
 
 .notification {
+    height: 40px;
     padding: 10px;
     background-color: #EEEEEE;
 
@@ -144,4 +145,20 @@ border-radius: 15px;
 
 .notification-time{
     font-size: 13px;
+}
+
+
+
+.notification-count{
+display: flex;
+justify-content: center;
+align-items: center;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 998;
 }

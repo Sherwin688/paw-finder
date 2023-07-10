@@ -22,6 +22,7 @@ const ViewApplications = () => {
     }, [])
     return (
         <div className="applications-container">
+            {applications.length===0 &&<div> <h2 style={{marginTop:"20px"}}>No Applications</h2><p>You will recieve requests here once someone is interested in your adoption post.</p></div>}
             {applications.map((application, index) => {
                 return (
                     <div className="application-card" key={index}>
@@ -36,7 +37,7 @@ const ViewApplications = () => {
                         </div>
                 )
             }
-            )}
+            )      }
         </div>
     )
 }

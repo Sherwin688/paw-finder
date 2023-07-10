@@ -6,7 +6,7 @@ import "./Viewpost.css"
 import { DataContext } from "../utils/context/DataProvider"
 import { NotificationsContext } from "../utils/context/NotificationsProvider"
 import { RiDeleteBin6Line } from "react-icons/ri"
-import { AiOutlineEdit } from "react-icons/ai"
+import { AiOutlineClose, AiOutlineEdit } from "react-icons/ai"
 import { CgProfile } from "react-icons/cg"
 
 const ViewPost = () => {
@@ -105,8 +105,8 @@ const ViewPost = () => {
       {showDeleteModal &&
         <div className="delete-modal">
           <div className="delete-modal-content">
-            <div className="close-icon" onClick={() => setShowDeleteModal(false)}>x</div>
-            <p>Are You Sure you want to delete this post?</p>
+            <div className="close-icon" onClick={() => setShowDeleteModal(false)}><AiOutlineClose/></div>
+            <p style={{marginTop:10}} >Are You Sure you want to delete this post?</p>
             <button className="delete-btn" onClick={handleDelete}>Delete Post</button>
           </div>
         </div>
@@ -114,7 +114,7 @@ const ViewPost = () => {
       {showAdoptModal &&
         <div className="delete-modal">
           <div className="delete-modal-content">
-            <div className="close-icon" onClick={() => setShowAdoptModal(false)}>x</div>
+            <div className="close-icon" onClick={() => setShowAdoptModal(false)}><AiOutlineClose/></div>
             <form onSubmit={handleApplicationSubmit}>
               <h2 style={{ textAlign: "center" }}>Adoption Application</h2>
               <div className="form-group">
@@ -164,13 +164,13 @@ const ViewPost = () => {
             </div>
             {post.user_name === account.name ?
               <div className="btn-container">
-                <Link className="edit-btn" to={`/post/edit/${post._id}`}><AiOutlineEdit style={{ fontSize: 30 }} /> </Link>
-                <button className="delete-btn" onClick={() => setShowDeleteModal(true)}><RiDeleteBin6Line style={{ fontSize: 30 }} /></button>
+                <Link className="edit-btn" to={`/post/edit/${post._id}`}><span>Edit</span> <AiOutlineEdit style={{ fontSize: 27 }} /> </Link>
+                <button className="delete-btn" onClick={() => setShowDeleteModal(true)}><span>Delete</span><RiDeleteBin6Line style={{ fontSize: 30 }} /></button>
 
               </div>
               :
               post.status === "Closed" ?
-                <button className="closed-btn">Post has been Closed</button>
+                <button className="closed-btn">This animal has been adopted.</button>
 
 
                 :

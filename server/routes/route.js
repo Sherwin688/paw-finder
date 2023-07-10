@@ -1,5 +1,5 @@
 const express = require("express")
-const { signup,login, test } = require("../controller/user-controller")
+const { signup,login, test, generateOtp, verifyOtp } = require("../controller/user-controller")
 const { authenticateUser } = require("../controller/jwt-controller")
 const upload = require("../utils/upload")
 const { uploadImage, getImage } = require("../controller/image-controller")
@@ -8,7 +8,7 @@ const { createApplication, getApplication, getAllApplications, updateApplication
 const { getNotifications, createNotification, deleteNotification } = require("../controller/notification-controller")
 const router = express.Router()
 
-router.post("/signup",signup)
+// router.post("/signup",signup)
 router.post("/login",login)
 router.get("/test",test)
 router.post("/file/upload",upload.array("files",10),uploadImage)
@@ -27,6 +27,8 @@ router.get("/applications/:name",getUserApplications)
 router.get("/notifications/:name",getNotifications)
 router.post("/notifications/create",createNotification)
 router.delete("/notifications/delete/:id",deleteNotification)
+router.post("/signup/generateOtp",generateOtp)
+router.post("/signup/verifyOtp",verifyOtp)
 
 
 module.exports = router

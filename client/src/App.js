@@ -12,6 +12,7 @@ import ViewPost from "./pages/ViewPost";
 import EditPost from "./pages/EditPost";
 import ViewApplications from "./pages/ViewApplications";
 import ViewApplication from "./pages/ViewApplication";
+import About from "./components/About";
 const PrivateRoute = ({ isAuthenticated, ...props }) => {
   return isAuthenticated ?
     <>
@@ -53,6 +54,7 @@ function App() {
 
 
               <Route path="/signup" element={<Signup />} />
+              <Route path="/about" element={<About />} />
               <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
 
             </Routes>

@@ -11,7 +11,7 @@ const createPost = async(req,res)=>{
             createdDate:new Date(),
             user_name:req.body.user_name,
             user_phone:req.body.user_phone,
-            status:"Open"
+            status:"Available"
         })
         await newPost.save()
         const newNotification  = await new Notification({
@@ -76,14 +76,63 @@ const deletePost = async (req, res) => {
     }
   };
   
-const getAllPost = async(req,res)=>{
-    try {
-        const posts = await Post.find({})
-        return res.status(200).json(posts)
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({msg:"error finding posts"})
+// const getAllPost = async(req,res)=>{
+//     try {
+//         const posts = await Post.find({})
+//         return res.status(200).json(posts)
+//     } catch (error) {
+//         console.log(error);
+//         return res.status(500).json({msg:"error finding posts"})
         
+//     }
+// }
+// const getAllPost = async (req, res) => {
+//     try {
+//       const page = parseInt(req.query.page) || 1;
+//       const pageSize = parseInt(req.query.pageSize) || 10;
+  
+//       const totalPosts = await Post.countDocuments();
+//       const totalPages = Math.ceil(totalPosts / pageSize);
+  
+//       const posts = await Post.find({}).skip((page - 1) * pageSize).limit(pageSize);
+  
+//       return res.status(200).json({
+//         posts,
+//         totalPages,
+//         currentPage: page,
+//         pageSize
+//       });
+//     } catch (error) {
+//       console.log(error);
+//       return res.status(500).json({ msg: "Error finding posts" });
+//     }
+//   };
+  const getAllPost = async (req, res) => {
+    try {
+      const page = parseInt(req.query.page) || 1;
+      const pageSize = parseInt(req.query.pageSize) || 20;
+      const keyword = req.query.keyword || '';
+  
+      const query = keyword
+        ? { title: { $regex: keyword, $options: 'i' } }
+        : {};
+  
+      const totalPosts = await Post.countDocuments(query);
+      const totalPages = Math.ceil(totalPosts / pageSize);
+  
+      const posts = await Post.find(query)
+        .skip((page - 1) * pageSize)
+        .limit(pageSize);
+  
+      return res.status(200).json({
+        posts,
+        totalPages,
+        currentPage: page,
+        pageSize
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ msg: "Error finding posts" });
     }
-}
+  };
 module.exports = {createPost,getAllPost,getPost,editPost,deletePost}
